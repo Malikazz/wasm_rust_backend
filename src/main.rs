@@ -3,6 +3,7 @@ use rocket_dyn_templates::Template;
 use std::collections::HashMap;
 use std::time::{Instant};
 use primes::{Sieve, PrimeSet};
+use rocket::fs::{FileServer, relative};
 
 struct PrimeReturn{
     ix : usize,
@@ -40,9 +41,17 @@ fn prime_wasm_frontend(start: u64) -> Template{
     Template::render("prime_wasm_frontend", &context)
 }
 
+#[get("/prime-js-frontend")]
+fn prime_js_frontend() -> Template{
+    let context:HashMap<String, String> = HashMap::new();
+    Template::render("prime_js_frontend", &context)
+}
+
+
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-    .mount("/", routes![index, prime_rust_backend, prime_wasm_frontend])
+    .mount("/", routes![index, prime_rust_backend, prime_wasm_frontend, prime_js_frontend])
+    .mount("/static", FileServer::from(relative!("static")))
     .attach(Template::fairing())
 }

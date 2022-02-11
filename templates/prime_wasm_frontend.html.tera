@@ -1,0 +1,14 @@
+<h1>Prime Wasm finder</h1>
+<h3>TimeSpan:</h3>
+<h3>Primes Found:</h3>
+<h3>First Prime After Start:</h3>
+<img src="/static/img.jpg" alt="fuck"/>
+<script type="module">
+import init, {greet, find_prime_after} from '/static/js/pkg/wasm_rust_front.js';
+init().then((wasm) =>{
+  let start = Date.now();
+  console.log(wasm.find_prime_after(100000000));
+  let end = Date.now();
+  console.log((end-start)/1000);
+});
+</script>
