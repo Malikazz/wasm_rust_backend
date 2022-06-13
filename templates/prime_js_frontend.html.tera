@@ -2,10 +2,12 @@
 <h3 id="time_span"></h3>
 <h3 id="primes_found"></h3>
 <script>
-function start() {    
+function start() {
+    let pattern = /([^\/]*$)/
+    let number = window.location.href.match(pattern)[0];
     start_time = performance.now();
     var array = [2, 3];
-    for (var i = 5; i <= 2000000; i += 2) {
+    for (var i = 5; i <= number; i += 2) {
         if (array.every(function(p) { return i % p; })) {
             array.push(i);
         }

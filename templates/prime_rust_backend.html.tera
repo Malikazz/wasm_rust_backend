@@ -1,4 +1,3 @@
 <h1> Rust backend Prime calculations</h1>
 <h3>TimeSpan: {{time_span}}</h3>
 <h3>Primes Found: {{ix}}</h3>
-<h3>First Prime After Start: {{n}}</h3>

@@ -41,8 +41,8 @@ fn prime_wasm_frontend(start: u64) -> Template{
     Template::render("prime_wasm_frontend", &context)
 }
 
-#[get("/prime-js-frontend")]
-fn prime_js_frontend() -> Template{
+#[get("/prime-js-frontend/<start>")]
+fn prime_js_frontend(start: u64) -> Template{
     let context:HashMap<String, String> = HashMap::new();
     Template::render("prime_js_frontend", &context)
 }

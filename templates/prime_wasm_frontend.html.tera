@@ -1,14 +1,15 @@
 <h1>Prime Wasm finder</h1>
-<h3>TimeSpan:</h3>
-<h3>Primes Found:</h3>
-<h3>First Prime After Start:</h3>
-<img src="/static/img.jpg" alt="fuck"/>
+<h3 id="timespan">TimeSpan:</h3>
+<h3 id="primes">Primes Found:</h3>
 <script type="module">
 import init, {greet, find_prime_after} from '/static/js/pkg/wasm_rust_front.js';
 init().then((wasm) =>{
+  let pattern = /([^\/]*$)/
+  let number = window.location.href.match(pattern)[0];
   let start = Date.now();
-  console.log(wasm.find_prime_after(100000000));
+  let primesFound = wasm.find_prime_after(number);
   let end = Date.now();
-  console.log((end-start)/1000);
+  document.querySelector('#timespan').innerHTML = "Timespan: " + ((end-start)/1000)
+  document.querySelector('#primes').innerHTML = "Primes Found: "  + primesFound;
 });
 </script>
